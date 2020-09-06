@@ -4,13 +4,13 @@ import com.crm.customerRealtion.management.entity.Entity;
 
 import java.util.Objects;
 
-public class BookRequest {
+public class Request {
     Integer _id;
     String name;
     Integer age;
     String colour;
 
-    public BookRequest(Integer _id, String name, Integer age, String colour) {
+    public Request(Integer _id, String name, Integer age, String colour) {
         this._id = _id;
         this.name = name;
         this.age = age;
@@ -53,7 +53,7 @@ public class BookRequest {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        BookRequest that = (BookRequest) o;
+        Request that = (Request) o;
         return Objects.equals(_id, that._id) &&
                 Objects.equals(name, that.name) &&
                 Objects.equals(age, that.age) &&
@@ -75,7 +75,7 @@ public class BookRequest {
                 '}';
     }
 
-    public Entity toEntity(BookRequest request) {
+    public Entity toEntity(Request request) {
         return new Entity(request._id,request.name, request.age,request.colour);
     }
 }

@@ -1,7 +1,7 @@
 package com.crm.customerRealtion.management.controller;
 
 import com.crm.customerRealtion.management.entity.Entity;
-import com.crm.customerRealtion.management.model.BookRequest;
+import com.crm.customerRealtion.management.model.Request;
 import com.crm.customerRealtion.management.service.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -31,7 +31,7 @@ public class crmController {
     }
 
     @PostMapping(path = "/users/save")
-    public ResponseEntity<Entity> saveBooks(@RequestBody BookRequest request) {
+    public ResponseEntity<Entity> saveBooks(@RequestBody Request request) {
         try {
             Entity data = service.save(request);
             if (data != null) {
@@ -47,7 +47,7 @@ public class crmController {
 
     @PutMapping(path = "/users/edit")
     public ResponseEntity<Entity> update(
-            @RequestBody BookRequest request) {
+            @RequestBody Request request) {
         try {
             Entity servicevalue = service.update(request);
             return ResponseEntity.ok().body(servicevalue);
@@ -60,10 +60,10 @@ public class crmController {
     }
 
     @DeleteMapping(path = "/users/delete")
-    public ResponseEntity<BookRequest> delete(
-            @RequestBody BookRequest request) {
+    public ResponseEntity<Request> delete(
+            @RequestBody Request request) {
         try {
-            BookRequest deleteService = service.delete(request);
+            Request deleteService = service.delete(request);
             return ResponseEntity.ok().body(deleteService);
         } catch (ArithmeticException e) {
             return ResponseEntity.notFound().build();
